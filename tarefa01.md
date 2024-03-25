@@ -1,0 +1,14 @@
+# Rest API
+API é um acrônimo para Application Programming Interface, enquanto REST é uma sigla para Representation State Transfer. O que isso significa?
+Basicamente, trata-se de um conjunto de rotinas e padrões que uma aplicação primária disponibiliza para que outras aplicações (secundárias) consigam ter acesso a informações desta aplicação primária.
+Ela é responsável pela comunicação, regrada por protocolos, entre diferentes serviços.
+## A analogia clássica
+Uma analogia clássica para começarmos a entender o conceito de API é compreendermos a relação entre um garçom com os clientes e a cozinha. Em um restaurante, é atribuído ao garçom a tarefa de levar os elementos da cozinha para os clientes. Assim como uma API, deve entregar o conteúdo de seu Server para
+seus Clients. Portanto, o garçom seria nossa API, a cozinha seria o *Server* e cada cliente seria um *Client*.
+
+## A arquitetura REST
+Para uma API ser considerada RESTful, deveremos seguir as seguintes premissas:
+1. Separação entre Client-Server: Garante a portabilidade e escalabilidade do uso da API, no sentido de termos diferentes clientes sendo executados em diferentes plataformas, e além disso, no sentido de ser escalável, ou seja, caso aconteça um aumento no número de clientes que acessam o sistema, é possível adicionar mais servidores para lidar com a carga adicional sem afetar diretamente os clientes.
+Esta característica também é importante devido o modelo cliente-servidor separar claramente as responsabilidades entre duas entidades distintas. O cliente é responsável por fazer requisições para o servidor, enquanto o servidor é responsável por processar essas requisições e fornecer respostas apropriadas. Isso promove um design claro e modular, facilitando o desenvolvimento e a manutenção do sistema.
+2. Stateless: Retornando a analogia, poderíamos pensar que cada pedido (REQUEST) que um cliente X faz ao garçom deve ser completo. Isto é, este garçom deve saber que é pro cliente X que ele deve entregar a resposta (RESPONSE). Exemplo: A sessão do usuário deverá ser enviada em todas as requisições, para saber se aquele usuário está autenticado e apto a usar os serviços, e o servidor não pode lembrar que o cliente foi autenticado na requisição anterior. Nos nossos cursos, temos por padrão usar tokens para as comunicações.
+3. Cacheable: as respostas das requisições podem ser temporariamente armazenadas em cache em diferentes pontos da rede. Essa característica melhora a performance, reduz a carga no servidor, proporciona resiliência da rede e melhora a escalabilidade do sistema. No entanto, nem todas as respostas são cacheáveis, e isso depende das configurações específicas da API e das características do recurso. O uso de cabeçalhos HTTP como "Cache-Control" e "Expires" permite controlar explicitamente a cacheabilidade das respostas.
